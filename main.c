@@ -13,12 +13,16 @@ int main(int argc, char * argv[]) {
     }
     
     char * letters = argv[1];
-    int wordsFound = cash_word(letters);
+    struct ListNode* wordsFound = cash_word(letters);
+    int numWords = count_nodes(wordsFound);
     
     int i, words = 0;
     
-    printf("\n\aThis CASHWORD Puzzle has %d matching word(s).", wordsFound);
-    printf("\nPrize value for this Cashword Puzzle: $%d", prize_value(wordsFound));
+    printf("\n\aThis CASHWORD Puzzle has %d matching word(s):\n", numWords);
+    print_nodes(wordsFound);
+    printf("\nPrize value for this Cashword Puzzle: $%d", prize_value(numWords));
+    
+    free(wordsFound);
     
     return 0;
 }
